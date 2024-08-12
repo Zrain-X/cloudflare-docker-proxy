@@ -5,20 +5,16 @@ addEventListener("fetch", (event) => {
 
 const dockerHub = "https://registry-1.docker.io";
 
-const routes = {
-  // production
-  "docker.zran.top": dockerHub,
-  "quay.zran.top": "https://quay.io",
-  "gcr.zran.top": "https://gcr.io",
-  "k8s-gcr.zran.top": "https://k8s.gcr.io",
-  "k8s.zran.top": "https://registry.k8s.io",
-  "ghcr.zran.top": "https://ghcr.io",
-  "cloudsmith.zran.top": "https://docker.cloudsmith.io",
-  "ecr.zran.top": "https://public.ecr.aws",
-
-  // staging
-  "docker-staging.zran.top": dockerHub,
-};
+const routes = {};
+// production
+routes[`docker.{env.DOMAIN}`]=dockerHub;
+routes[`quay.{env.DOMAIN}`]="https://quay.io";
+routes[`gcr.{env.DOMAIN}`]="https://gcr.io";
+routes[`k8s-gcr.{env.DOMAIN}`]="https://k8s.gcr.io";
+routes[`k8s.{env.DOMAIN}`]="https://registry.k8s.io";
+routes[`ghcr.{env.DOMAIN}`]="https://ghcr.io";
+routes[`cloudsmith.{env.DOMAIN}`]="https://docker.cloudsmith.io";
+routes[`ecr.{env.DOMAIN}`]="https://public.ecr.aws";
 
 function routeByHosts(host) {
   if (host in routes) {
