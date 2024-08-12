@@ -7,14 +7,14 @@ const dockerHub = "https://registry-1.docker.io";
 
 const routes = {};
 // production
-routes[`docker.{DOMAIN}`]=dockerHub;
-routes[`quay.{DOMAIN}`]="https://quay.io";
-routes[`gcr.{DOMAIN}`]="https://gcr.io";
-routes[`k8s-gcr.{DOMAIN}`]="https://k8s.gcr.io";
-routes[`k8s.{DOMAIN}`]="https://registry.k8s.io";
-routes[`ghcr.{DOMAIN}`]="https://ghcr.io";
-routes[`cloudsmith.{DOMAIN}`]="https://docker.cloudsmith.io";
-routes[`ecr.{DOMAIN}`]="https://public.ecr.aws";
+routes["docker."+ DOMAIN ]=dockerHub;
+routes["quay."+ DOMAIN ]="https://quay.io";
+routes["gcr."+ DOMAIN ]="https://gcr.io";
+routes["k8s-gcr."+ DOMAIN ]="https://k8s.gcr.io";
+routes["k8s."+ DOMAIN ]="https://registry.k8s.io";
+routes["ghcr."+ DOMAIN ]="https://ghcr.io";
+routes["cloudsmith."+ DOMAIN ]="https://docker.cloudsmith.io";
+routes["ecr."+ DOMAIN ]="https://public.ecr.aws";
 
 function routeByHosts(host) {
   if (host in routes) {
